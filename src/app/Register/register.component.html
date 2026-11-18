@@ -1,0 +1,132 @@
+
+<div class="container py-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-md-7 col-lg-6">
+
+      <div class="card shadow p-4">
+
+        <h1 class="text-center mb-4">
+          Create Account
+        </h1 >
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+          <div class="mb-3">
+            <label class="form-label">Full Name</label>
+
+            <input
+              type="text"
+              class="form-control"
+              formControlName="fullName"
+              placeholder="Enter your full name">
+
+            <div class="text-danger small"
+              *ngIf="f.fullName.touched && f.fullName.errors?.['required']">
+              Full Name is required.
+            </div>
+          </div>
+
+        
+          <div class="mb-3">
+            <label class="form-label">Email Address</label>
+
+            <input
+              type="email"
+              class="form-control"
+              formControlName="email"
+              placeholder="Enter your email">
+
+            <div class="text-danger small"
+              *ngIf="f.email.touched && f.email.errors?.['required']">
+              Email is required.
+            </div>
+
+            <div class="text-danger small"
+              *ngIf="f.email.touched && f.email.errors?.['email']">
+              Enter a valid email address.
+            </div>
+          </div>
+
+          
+          <div class="mb-3">
+            <label class="form-label">Mobile Number</label>
+
+            <input
+              type="tel"
+              class="form-control"
+              formControlName="mobile"
+              placeholder="Enter 10 digit mobile number">
+
+            <div class="text-danger small"
+              *ngIf="f.mobile.touched && f.mobile.errors?.['required']">
+              Mobile number is required.
+            </div>
+
+            <div class="text-danger small"
+              *ngIf="f.mobile.touched && f.mobile.errors?.['pattern']">
+              Enter a valid 10-digit mobile number.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+
+            <input
+              type="password"
+              class="form-control"
+              formControlName="password"
+              placeholder="Enter password">
+
+            <div class="text-danger small"
+              *ngIf="f.password.touched && f.password.errors?.['required']">
+              Password is required.
+            </div>
+
+            <div class="text-danger small"
+              *ngIf="f.password.touched && f.password.errors?.['minlength']">
+              Password must contain at least 8 characters.
+            </div>
+
+            <div class="text-danger small"
+              *ngIf="f.password.touched && f.password.errors?.['pattern']">
+              Include uppercase, lowercase and a number.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Confirm Password</label>
+
+            <input
+              type="password"
+              class="form-control"
+              formControlName="confirmPassword"
+              placeholder="Confirm your password">
+
+            <div class="text-danger small"
+              *ngIf="f.confirmPassword.touched && f.confirmPassword.errors?.['required']">
+              Confirm Password is required.
+            </div>
+
+            <div class="text-danger small"
+              *ngIf="f.confirmPassword.touched && registerForm.errors?.['passwordMismatch']">
+              Passwords do not match.
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary w-100">
+            Register
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
